@@ -1,0 +1,185 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, sans-serif;
+  line-height: 1.7;
+}
+
+.page {
+  width: 92%;
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 2rem 0;
+}
+
+.panel {
+  margin: 1.5rem 0;
+  padding: 1.5rem;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+a {
+  color: inherit;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+a:focus-visible {
+  outline: 3px solid currentColor;
+  outline-offset: 4px;
+}
+
+nav a {
+  display: inline-block;
+  margin: 0.3em 0.6em 0.3em 0;
+}
+
+.action {
+  display: inline-block;
+  padding: 0.7em 1em;
+  border: 2px solid currentColor;
+  border-radius: 8px;
+  text-decoration: none;
+}
+
+figure {
+  margin: 1rem 0;
+}
+
+figcaption {
+  font-size: 0.9rem;
+  margin-top: 0.4rem;
+}
+
+/* Front page: travel magazine */
+.page-home {
+  background-color: #ffffff;
+  color: #17223b;
+}
+
+.page-home h1 {
+  font-size: 2.8rem;
+  letter-spacing: -0.02em;
+  border-bottom: 3px solid #17223b;
+  padding-bottom: 0.5rem;
+}
+
+.page-home nav a {
+  font-weight: 700;
+  border: 1px solid #17223b;
+  padding: 0.4em 0.9em;
+  border-radius: 999px;
+  text-decoration: none;
+}
+
+.page-home .place-card {
+  border: 1px solid #dfe4ef;
+  border-radius: 8px;
+  padding: 1.25rem;
+  margin: 1.5rem 0;
+}
+
+.page-home .place-card h3 {
+  margin-top: 1rem;
+}
+
+/* Place 1: cafeteria — warm dining */
+.page-cafeteria {
+  background-color: #fff3e0;
+  color: #6d4c2f;
+  font-family: "Segoe UI", system-ui, sans-serif;
+}
+
+.page-cafeteria h1 {
+  color: #e65100;
+}
+
+.page-cafeteria .panel {
+  background-color: #ffffff;
+  border-radius: 18px;
+}
+
+.page-cafeteria .action {
+  background-color: #ef6c00;
+  color: #ffffff;
+  border: none;
+}
+
+/* Place 2: classroom — quiet study */
+.page-classroom {
+  background-color: #f6f1e7;
+  color: #2f3447;
+  font-family: Georgia, "Times New Roman", serif;
+}
+
+.page-classroom h1 {
+  font-size: 2.2rem;
+}
+
+.page-classroom .panel {
+  background-color: #fffcf5;
+  border: 1px solid #b9a37f;
+  border-radius: 2px;
+}
+
+.page-classroom .action {
+  border-radius: 0;
+}
+
+/* Place 3: dormitory — night hideout */
+.page-dormitory {
+  background-color: #1f2430;
+  color: #e8e3d7;
+}
+
+.page-dormitory h1 {
+  color: #8ecae6;
+}
+
+.page-dormitory .panel {
+  background-color: #2a3140;
+  border-left: 5px solid #8ecae6;
+  border-radius: 8px;
+}
+
+.page-dormitory .action {
+  border-color: #8ecae6;
+}
+
+/* Mobile rules for all four pages */
+@media (max-width: 600px) {
+  .page {
+    width: 94%;
+    padding: 1rem 0;
+  }
+
+  .panel {
+    padding: 1rem;
+    margin: 1rem 0;
+  }
+
+  .page h1 {
+    font-size: 1.8rem;
+  }
+
+  nav a {
+    display: block;
+    margin: 0.4rem 0;
+  }
+
+  .action {
+    display: block;
+    text-align: center;
+    padding: 1em;
+  }
+}
