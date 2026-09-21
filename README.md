@@ -4,8 +4,8 @@ A small homepage that introduces three campus places I visit when I need a short
 
 ## GitHub Pages
 
-- Repository URL: `https://github.com/YOUR_ID/campus-hotspots`
-- Pages URL: `https://YOUR_ID.github.io/campus-hotspots/`
+- Repository URL: `https://github.com/583955636stmc-create/campus-hotspots`
+- Pages URL: `https://583955636stmc-create.github.io/campus-hotspots/`
 
 ## Week 2 · My Campus Hotspots
 
