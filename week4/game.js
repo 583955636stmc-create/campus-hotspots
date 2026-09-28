@@ -402,7 +402,8 @@ function loop(now) {
 
 /* ---------- 입력 ---------- */
 
-canvas.addEventListener("pointerdown", function (event) {
+// 캔버스에서 누른 위치를 칸 번호로 바꾸고 그 칸을 엽니다.
+function tapAt(event) {
   if (!running || finished) {
     return;
   }
@@ -416,6 +417,23 @@ canvas.addEventListener("pointerdown", function (event) {
     event.preventDefault();
     reveal(index);
   }
+}
+
+// 마우스·터치에서는 pointerdown이 먼저 오고 곧이어 click이 옵니다.
+// pointerdown을 보내지 않는 환경도 있어 click을 함께 받되, 같은 입력이
+// 두 번 처리되지 않도록 pointerdown 직후의 click은 건너뜁니다.
+let lastPointerDown = 0;
+
+canvas.addEventListener("pointerdown", function (event) {
+  lastPointerDown = performance.now();
+  tapAt(event);
+});
+
+canvas.addEventListener("click", function (event) {
+  if (performance.now() - lastPointerDown < 500) {
+    return;
+  }
+  tapAt(event);
 });
 
 startBtn.addEventListener("click", startGame);
