@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>캠퍼스 장소 탐험 · 웹프로그래밍 4주차</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="app.js" defer></script>
+  </head>
+  <body class="page-explore">
+    <header class="site-header">
+      <p class="eyebrow">웹프로그래밍 4주차 · JavaScript</p>
+      <h1>캠퍼스 장소 탐험</h1>
+      <p class="lead">
+        2주차에 만든 세 장소를 하나의 화면으로 합쳤습니다. 아래 버튼을 누르면 설명과 지도가
+        페이지를 새로고침하지 않고 함께 바뀝니다.
+      </p>
+      <nav class="site-nav" aria-label="다른 페이지">
+        <a href="statistics.html">전력 접근률 통계</a>
+        <a href="game.html">캠퍼스 보물찾기 게임</a>
+        <a href="../index.html">2·3주차 페이지</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="panel" aria-labelledby="pick-title">
+        <h2 id="pick-title">장소를 선택하세요</h2>
+        <div class="place-buttons" role="group" aria-label="장소 선택">
+          <button type="button" class="place-btn" data-place="cafeteria" aria-pressed="true">학생식당</button>
+          <button type="button" class="place-btn" data-place="classroom" aria-pressed="false">강의동</button>
+          <button type="button" class="place-btn" data-place="dormitory" aria-pressed="false">기숙사</button>
+        </div>
+        <p class="hint">버튼을 누르면 아래 설명과 오른쪽 지도가 함께 바뀝니다.</p>
+      </section>
+
+      <div class="explore-grid">
+        <div class="place-list">
+          <article class="panel place" id="place-cafeteria" data-place="cafeteria">
+            <h2>학생식당</h2>
+            <img src="images/cafeteria.jpg" alt="학생과 교수님이 함께 식사하는 학생식당 내부">
+            <p>
+              학생과 교수님이 함께 식사하는 곳입니다. 건물 1층과 2층을 식당으로 사용하며,
+              점심시간에는 여러 건물에서 온 사람들로 가장 붐빕니다.
+            </p>
+            <p class="reason">
+              <strong>추천 이유:</strong> 수업 사이에 끼니를 해결하기 좋고 여러 사람을 만날 수 있어
+              하루에 한 번은 꼭 들르게 되는 장소입니다.
+            </p>
+          </article>
+
+          <article class="panel place" id="place-classroom" data-place="classroom" hidden>
+            <h2>강의동</h2>
+            <img src="images/classroom.jpg" alt="학교 정문에서 올라오면 가장 먼저 보이는 강의동">
+            <p>
+              학교 정문에서 오르막을 올라오면 가장 먼저 보이는 건물입니다. 컴퓨터 실습실이 있어
+              전공 수업과 실습이 주로 이곳에서 열립니다.
+            </p>
+            <p class="reason">
+              <strong>추천 이유:</strong> 전공 수업과 실습이 모두 이 건물에서 이루어져서 하루 중
+              가장 오래 머무는 장소입니다.
+            </p>
+          </article>
+
+          <article class="panel place" id="place-dormitory" data-place="dormitory" hidden>
+            <h2>기숙사</h2>
+            <img src="images/dormitory.jpg" alt="눈이 쌓인 겨울 풍경의 교외 기숙사">
+            <p>
+              학교 정문 오른쪽으로 곧장 가면 보이는 교외 기숙사입니다. 겨울에는 눈이 쌓인 풍경이
+              특히 예뻐서 사진을 찍는 사람이 많습니다.
+            </p>
+            <p class="reason">
+              <strong>추천 이유:</strong> 수업이 끝난 뒤 쉬고 다음 날을 준비하는 공간이라 하루의
+              시작과 끝을 함께하는 장소입니다.
+            </p>
+          </article>
+        </div>
+
+        <section class="panel map-panel" aria-labelledby="map-title">
+          <h2 id="map-title">지도</h2>
+          <div class="map-frame">
+            <iframe
+              id="place-map"
+              title="선택한 장소의 구글 지도"
+              src="https://maps.google.com/maps?q=37.4864303,126.8011835&amp;z=17&amp;hl=ko&amp;output=embed"
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+              allowfullscreen></iframe>
+          </div>
+          <p class="map-caption" id="map-caption">학생식당 · 위도 37.4864, 경도 126.8012</p>
+        </section>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <p>사진: 직접 촬영. 지도: Google Maps. 내용: 직접 작성.</p>
+    </footer>
+  </body>
+</html>

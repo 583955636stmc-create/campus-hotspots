@@ -1,0 +1,486 @@
+/* 웹프로그래밍 4주차 · 공용 스타일
+   index.html(장소 탐험) / statistics.html(통계) / game.html(게임)에서 함께 사용합니다. */
+
+:root {
+  --bg: #eef2f9;
+  --surface: #ffffff;
+  --ink: #1b2438;
+  --muted: #5b6683;
+  --line: #d8e0ef;
+  --accent: #2f6fed;
+  --accent-dark: #1d4fbb;
+  --accent-soft: #e6eefd;
+  --gold: #e0a326;
+  --danger: #d94a4a;
+  --radius: 14px;
+  --shadow: 0 6px 20px rgba(27, 36, 56, 0.07);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background-color: var(--bg);
+  color: var(--ink);
+  font-family: "Pretendard", "Noto Sans KR", "Malgun Gothic", "Apple SD Gothic Neo", system-ui, sans-serif;
+  font-size: 16px;
+  line-height: 1.7;
+  word-break: keep-all;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+a {
+  color: var(--accent-dark);
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+a:focus-visible,
+button:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 3px;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+/* ---------- 공통 뼈대 ---------- */
+
+.site-header,
+main,
+.site-footer {
+  width: 94%;
+  max-width: 1040px;
+  margin: 0 auto;
+}
+
+.site-header {
+  padding: 2rem 0 1rem;
+}
+
+.eyebrow {
+  margin: 0 0 0.4rem;
+  color: var(--accent-dark);
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+
+.site-header h1 {
+  margin: 0 0 0.6rem;
+  font-size: 2.1rem;
+  line-height: 1.3;
+}
+
+.lead {
+  margin: 0 0 1rem;
+  max-width: 46rem;
+  color: var(--muted);
+}
+
+.site-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.site-nav a {
+  display: inline-block;
+  padding: 0.45em 0.95em;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background-color: var(--surface);
+  color: var(--accent-dark);
+  font-size: 0.92rem;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.site-nav a:hover {
+  border-color: var(--accent);
+  background-color: var(--accent-soft);
+  text-decoration: none;
+}
+
+.panel {
+  margin: 0 0 1.25rem;
+  padding: 1.4rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background-color: var(--surface);
+  box-shadow: var(--shadow);
+}
+
+.panel h2 {
+  margin: 0 0 0.9rem;
+  font-size: 1.25rem;
+}
+
+.hint {
+  margin: 0.9rem 0 0;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.site-footer {
+  padding: 1rem 0 2.5rem;
+  color: var(--muted);
+  font-size: 0.88rem;
+}
+
+/* ---------- 실습 1 · 장소 탐험 ---------- */
+
+.place-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+
+.place-btn {
+  flex: 1 1 9rem;
+  padding: 0.8em 1em;
+  border: 2px solid var(--line);
+  border-radius: 10px;
+  background-color: var(--surface);
+  color: var(--ink);
+  font-family: inherit;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.place-btn:hover {
+  border-color: var(--accent);
+}
+
+.place-btn[aria-pressed="true"] {
+  border-color: var(--accent);
+  background-color: var(--accent);
+  color: #ffffff;
+}
+
+.explore-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 1.25rem;
+  align-items: start;
+}
+
+.place-list .place {
+  margin-bottom: 1.25rem;
+}
+
+.place img {
+  width: 100%;
+  margin-bottom: 0.9rem;
+  border-radius: 10px;
+}
+
+.place p {
+  margin: 0 0 0.7rem;
+}
+
+.place .reason {
+  margin-bottom: 0;
+  padding: 0.8rem 1rem;
+  border-left: 4px solid var(--accent);
+  border-radius: 0 8px 8px 0;
+  background-color: var(--accent-soft);
+}
+
+.map-panel {
+  position: sticky;
+  top: 1rem;
+}
+
+.map-frame {
+  position: relative;
+  width: 100%;
+  height: 420px;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background-color: #dfe6f2;
+}
+
+.map-frame iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+.map-caption {
+  margin: 0.7rem 0 0;
+  color: var(--muted);
+  font-size: 0.88rem;
+}
+
+/* ---------- 실습 2 · 통계 ---------- */
+
+.status {
+  margin: 0 0 1rem;
+  padding: 0.9rem 1.1rem;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background-color: var(--surface);
+  color: var(--muted);
+  font-size: 0.92rem;
+}
+
+.status.is-error {
+  border-color: var(--danger);
+  background-color: #fdeaea;
+  color: #8f2323;
+}
+
+.tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.tab-btn {
+  padding: 0.65em 1.1em;
+  border: 2px solid var(--line);
+  border-radius: 999px;
+  background-color: var(--surface);
+  color: var(--ink);
+  font-family: inherit;
+  font-size: 0.95rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.tab-btn:hover {
+  border-color: var(--accent);
+}
+
+.tab-btn[aria-selected="true"] {
+  border-color: var(--accent);
+  background-color: var(--accent);
+  color: #ffffff;
+}
+
+.chart-card {
+  margin: 0 0 1.5rem;
+  padding: 1.4rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background-color: var(--surface);
+  box-shadow: var(--shadow);
+}
+
+.chart-card h2 {
+  margin: 0 0 0.35rem;
+  font-size: 1.2rem;
+}
+
+.chart-meta {
+  margin: 0 0 1rem;
+  color: var(--muted);
+  font-size: 0.88rem;
+}
+
+.chart-box {
+  position: relative;
+  width: 100%;
+  height: 340px;
+}
+
+.chart-src {
+  margin: 0.9rem 0 0;
+  color: var(--muted);
+  font-size: 0.86rem;
+}
+
+.interpretation {
+  margin-top: 1.1rem;
+  padding: 1rem 1.1rem;
+  border-radius: 10px;
+  background-color: #f7f9fe;
+}
+
+.interpretation h3 {
+  margin: 0 0 0.5rem;
+  font-size: 1rem;
+}
+
+.interpretation p {
+  margin: 0;
+  font-size: 0.95rem;
+}
+
+.data-note {
+  margin: 0 0 2rem;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+/* ---------- 실습 3 · 게임 ---------- */
+
+.game-shell {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 1.25rem;
+  align-items: start;
+}
+
+.hud {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.6rem;
+  margin-bottom: 1rem;
+}
+
+.hud-item {
+  padding: 0.6rem 0.8rem;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background-color: #f7f9fe;
+}
+
+.hud-label {
+  display: block;
+  color: var(--muted);
+  font-size: 0.78rem;
+}
+
+.hud-value {
+  display: block;
+  font-size: 1.25rem;
+  font-weight: 800;
+}
+
+.hud-value.is-urgent {
+  color: var(--danger);
+}
+
+.game-stage {
+  position: relative;
+  width: 100%;
+  max-width: 520px;
+}
+
+#game-canvas {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background-color: #101a2e;
+  cursor: pointer;
+  touch-action: none;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.game-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin-top: 1rem;
+}
+
+.btn-primary {
+  flex: 1 1 10rem;
+  padding: 0.85em 1.2em;
+  border: none;
+  border-radius: 10px;
+  background-color: var(--accent);
+  color: #ffffff;
+  font-family: inherit;
+  font-size: 1rem;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.btn-primary:hover {
+  background-color: var(--accent-dark);
+}
+
+.game-result {
+  margin-top: 1rem;
+  padding: 1rem 1.1rem;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background-color: #f7f9fe;
+  font-size: 0.95rem;
+}
+
+.game-result strong {
+  font-size: 1.1rem;
+}
+
+.rules {
+  margin: 0;
+  padding-left: 1.1rem;
+  color: var(--muted);
+  font-size: 0.93rem;
+}
+
+.rules li {
+  margin-bottom: 0.35rem;
+}
+
+/* ---------- 모바일 ---------- */
+
+@media (max-width: 820px) {
+  .site-header h1 {
+    font-size: 1.6rem;
+  }
+
+  .panel,
+  .chart-card {
+    padding: 1.1rem;
+  }
+
+  .explore-grid,
+  .game-shell {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .map-panel {
+    position: static;
+  }
+
+  .map-frame {
+    height: 300px;
+  }
+
+  .place-btn {
+    flex: 1 1 100%;
+    padding: 0.95em 1em;
+  }
+
+  .tab-btn {
+    flex: 1 1 100%;
+    border-radius: 10px;
+  }
+
+  .chart-box {
+    height: 280px;
+  }
+
+  .hud {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .game-stage {
+    max-width: 100%;
+  }
+}

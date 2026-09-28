@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>전력 접근률 통계 · 웹프로그래밍 4주차</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js" defer></script>
+    <script src="statistics.js" defer></script>
+  </head>
+  <body class="page-stats">
+    <header class="site-header">
+      <p class="eyebrow">웹프로그래밍 4주차 · JavaScript</p>
+      <h1>전력 접근률, 누가 뒤처져 있는가</h1>
+      <p class="lead">
+        공개 CSV를 내려받아 같은 자료를 두 가지 질문으로 나누어 보았습니다. 위의 탭을 누르면
+        그래프와 해석이 함께 바뀝니다.
+      </p>
+      <nav class="site-nav" aria-label="다른 페이지">
+        <a href="index.html">장소 탐험</a>
+        <a href="game.html">캠퍼스 보물찾기 게임</a>
+      </nav>
+    </header>
+
+    <main>
+      <p class="status" id="status" role="status">CSV를 읽는 중입니다…</p>
+
+      <div class="tabs" role="tablist" aria-label="그래프 선택">
+        <button type="button" class="tab-btn" id="tab-1" role="tab" aria-selected="true" aria-controls="panel-1">
+          그래프 1 · 2024년 소득 그룹 비교
+        </button>
+        <button type="button" class="tab-btn" id="tab-2" role="tab" aria-selected="false" aria-controls="panel-2">
+          그래프 2 · 2000~2024년 변화
+        </button>
+      </div>
+
+      <section id="panel-1" role="tabpanel" aria-labelledby="tab-1" tabindex="0">
+        <div class="chart-card">
+          <h2>2024년 소득 그룹별 전력 접근률</h2>
+          <p class="chart-meta">단위: 인구 비율(%) · 대상: 소득 그룹별 전체 인구 · 기준 연도: 2024년 · 그래프: 막대</p>
+          <div class="chart-box">
+            <canvas id="chart-1" role="img" aria-label="2024년 소득 그룹별 전력 접근률 막대 그래프"></canvas>
+          </div>
+          <p class="chart-src">
+            출처: Our World in Data, 「Share of the population with access to electricity」 ·
+            2026-09-28 내려받음 ·
+            <a href="https://ourworldindata.org/grapher/share-of-the-population-with-access-to-electricity" target="_blank" rel="noopener">원본 그래프 보기</a>
+          </p>
+          <div class="interpretation">
+            <h3>해석</h3>
+            <p>
+              2024년 기준으로 고소득 국가는 99.97%, 중상위 소득 국가는 99.32%로 거의 모든 인구가
+              전기를 사용합니다. 반면 저소득 국가는 48.80%로, 절반이 넘는 인구가 여전히 전기를 쓰지
+              못합니다. 같은 해 세계 평균은 91.93%인데, 이는 인구가 많은 중간 소득 국가들의 값이
+              높기 때문으로 보입니다(추정). 이 그래프는 소득 수준에 따라 전력 접근률이 뚜렷하게
+              갈린다는 사실을 보여주지만, 소득이 낮은 것이 전기 부족의 원인이라고 단정할 수는
+              없습니다.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section id="panel-2" role="tabpanel" aria-labelledby="tab-2" tabindex="0" hidden>
+        <div class="chart-card">
+          <h2>소득 그룹별 전력 접근률 변화 (2000~2024)</h2>
+          <p class="chart-meta">단위: 인구 비율(%) · 대상: 소득 그룹별 전체 인구 · 기간: 2000~2024년 · 그래프: 선</p>
+          <div class="chart-box">
+            <canvas id="chart-2" role="img" aria-label="2000년부터 2024년까지 소득 그룹별 전력 접근률 선 그래프"></canvas>
+          </div>
+          <p class="chart-src">
+            출처: Our World in Data, 「Share of the population with access to electricity」 ·
+            2026-09-28 내려받음 ·
+            <a href="https://ourworldindata.org/grapher/share-of-the-population-with-access-to-electricity" target="_blank" rel="noopener">원본 그래프 보기</a>
+          </p>
+          <div class="interpretation">
+            <h3>해석</h3>
+            <p>
+              2000년과 2024년을 비교하면 저소득 국가는 15.87%에서 48.80%로 32.9%p, 중하위 소득
+              국가는 56.52%에서 91.36%로 34.8%p 상승했습니다. 반면 고소득 국가는 99.44%에서
+              99.97%로 거의 변하지 않았습니다. 그 결과 저소득 국가와 고소득 국가의 격차는 2000년
+              83.6%p에서 2024년 51.2%p로 줄었지만 여전히 큽니다. 모든 그룹이 개선되었다는 점은
+              이 자료가 분명하게 보여주지만, 남은 격차가 언제 해소될지는 이 자료만으로 알 수
+              없습니다.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <p class="data-note">
+        사용한 CSV: <a href="data/electricity-access.csv" download>electricity-access.csv</a>
+        (Our World in Data, CC BY · 재배포 허용) · 값이 비어 있는 칸은 0으로 바꾸지 않고 그래프에서
+        비워 두었습니다.
+      </p>
+    </main>
+
+    <footer class="site-footer">
+      <p>웹프로그래밍 4주차 실습 2 · HTML·CSS·JavaScript 분리, Papa Parse와 Chart.js 사용.</p>
+    </footer>
+  </body>
+</html>
